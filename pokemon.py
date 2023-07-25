@@ -157,6 +157,9 @@ df = pd.read_csv('pokemon_data.csv')
 '''  Conditional Changes  '''
 
 # df.loc[df['Type 1']== 'Fire', 'Type 1'] = 'Flamer'
-df.loc[df['Type 1']== 'Fire', 'Legendary'] = True
+# changing Type 1 that is Fire to Flamer
+
+# df.loc[df['Type 1']== 'Fire', 'Legendary'] = True
+# changing the Legendary to True for all Type 1 that is Fire
 print(df)
 
