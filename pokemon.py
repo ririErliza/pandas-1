@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 ''' Load data into pandas '''
 
@@ -125,5 +126,37 @@ df = pd.read_csv('pokemon_data.csv')
 # 652  591              Amoonguss  Grass  Poison    464  114      85       70       85       80     30           5      False
 
 
-df = df.loc[df['Name'].str.contains('Mega')]
+# df = df.loc[df['Name'].str.contains('Mega')]
+# print(df)
+
+
+# print("No Mega")
+# df = df.loc[~df['Name'].str.contains('Mega')]
+# print(df)
+
+# df = df.loc[df['Type 1'].str.contains('fire|grass', flags=re.I, regex = True)]
+# print(df)
+
+#        #                   Name Type 1  Type 2   HP  Attack  Defense  Sp. Atk  Sp. Def  Speed  Generation  Legendary
+# 0      1              Bulbasaur  Grass  Poison   45      49       49       65       65     45           1      False
+# 1      2                Ivysaur  Grass  Poison   60      62       63       80       80     60           1      False
+# 2      3               Venusaur  Grass  Poison   80      82       83      100      100     80           1      False
+# 3      3  VenusaurMega Venusaur  Grass  Poison   80     100      123      122      120     80           1      False
+# 4      4             Charmander   Fire     NaN   39      52       43       60       50     65           1      False
+# ..   ...                    ...    ...     ...  ...     ...      ...      ...      ...    ...         ...        ...
+# 735  667                 Litleo   Fire  Normal   62      50       58       73       54     72           6      False
+# 736  668                 Pyroar   Fire  Normal   86      68       72      109       66    106           6      False
+# 740  672                 Skiddo  Grass     NaN   66      65       48       62       57     52           6      False
+# 741  673                 Gogoat  Grass     NaN  123     100       62       97       81     68           6      False
+# 799  721              Volcanion   Fire   Water   80     110      120      130       90     70           6       True
+
+#df = df.loc[df['Name'].str.contains('^pi[a-z]*', flags=re.I, regex = True)] #filter the name that start with Pi
+#df = df.loc[df['Name'].str.contains('Pi', regex = True)] # this works too but 'MeloettaPirouette Forme' got included
+#print(df)
+
+'''  Conditional Changes  '''
+
+# df.loc[df['Type 1']== 'Fire', 'Type 1'] = 'Flamer'
+df.loc[df['Type 1']== 'Fire', 'Legendary'] = True
 print(df)
+
